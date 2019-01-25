@@ -6,8 +6,11 @@ import Weather from './components/Weather'
 const apiKey = '41b267bdffde95a9a783cb9e23a9b0d7'
 
 class App extends React.Component {
-  getWeather = async () => {
-    const apiCall = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${apiKey}&units=metric`)
+  getWeather = async (e) => {
+    e.preventDefault()
+    const city = e.target.elements.city.value
+    const country = e.target.elements.country.value
+    const apiCall = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`)
     const data = await apiCall.json()
     console.log(data)
   }
@@ -16,9 +19,8 @@ class App extends React.Component {
     return(
       <div>
         <Titles />
-        <Form />
+        <Form getWeather={this.getWeather}/>
         <Weather />
-        {this.getWeather}
       </div>
     )
   }
