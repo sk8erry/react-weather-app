@@ -7,7 +7,9 @@ const apiKey = '41b267bdffde95a9a783cb9e23a9b0d7'
 
 class App extends React.Component {
   getWeather = async () => {
-    const apiCall = await fetch(`https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22`)
+    const apiCall = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${apiKey}&units=metric`)
+    const data = await apiCall.json()
+    console.log(data)
   }
 
   render() {
@@ -16,6 +18,7 @@ class App extends React.Component {
         <Titles />
         <Form />
         <Weather />
+        {this.getWeather}
       </div>
     )
   }
