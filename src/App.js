@@ -22,14 +22,21 @@ class App extends React.Component {
     const apiCall = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`)
     const data = await apiCall.json()
     console.log(data)
-    this.setState({
-      temperature: data.main.temp,
-      humidity: data.main.humidity,
-      description: data.weather[0].description,
-      city: data.name,
-      country: data.sys.country,
-      error: ''
-    })
+    if (data.cod !== '404') {
+      this.setState({
+        temperature: data.main.temp,
+        humidity: data.main.humidity,
+        description: data.weather[0].description,
+        city: data.name,
+        country: data.sys.country,
+        error: ''
+      })
+    } else {
+      this.setState({
+        error: data.cod
+      })
+      console.log(this.state)
+    }
   }
 
   render() {
