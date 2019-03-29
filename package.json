@@ -5,6 +5,7 @@
   "homepage": "https://github.com/sk8erry/react-weather-app",
   "dependencies": {
     "bootstrap": "^3.4.0",
+    "gh-pages": "^2.0.1",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.7.0",
@@ -15,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "yarn run build",
-   "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
